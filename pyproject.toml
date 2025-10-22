@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "vicodin"
+version = "0.1.0"
+description = "Dr. House for your Python exceptions 💊"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Goncalo de Melo" }]
+
+dependencies = [
+  "typer[all]",
+]
+
+[project.scripts]
+vicodin = "vicodin.cli:app"
+
