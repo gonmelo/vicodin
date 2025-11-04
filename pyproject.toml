@@ -1,20 +1,30 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "uv-dynamic-versioning"]
 build-backend = "hatchling.build"
 
 [project]
 name = "vicodin"
-version = "0.1.0"
+dynamic = ["version"]  # we’ll auto-read it from git tags
 description = "Dr. House for your Python exceptions 💊"
 readme = "README.md"
-requires-python = ">=3.9"
 license = { text = "MIT" }
-authors = [{ name = "Goncalo de Melo" }]
+requires-python = ">=3.9"
+authors = [{ name = "Your Name", email = "your@email.com" }]
 
 dependencies = [
-  "typer[all]",
+	"typer[all]",
+	"rich",
+	"litellm",
+	"openai",
+	"pydantic-settings",
 ]
 
 [project.scripts]
 vicodin = "vicodin.cli:app"
+
+[tool.hatch.version]
+source = "uv-dynamic-versioning"  # <-- tells Hatchling to use Git tags as your version source
+
+[tool.hatch.build.targets.wheel]
+packages = ["vicodin"]
 
